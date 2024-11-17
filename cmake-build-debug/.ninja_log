@@ -1,9 +1,6 @@
 # ninja log v6
-10	1290	7535556097330661	CMakeFiles/Coursework.dir/main.cpp.obj	3bca10f51501fa97
-1295	1862	7535556110183473	Coursework.exe	bb222dc3ce07f24c
-50	1290	7535556350469660	CMakeFiles/Coursework.dir/main.cpp.obj	3bca10f51501fa97
-1291	1623	7535556362869105	Coursework.exe	bb222dc3ce07f24c
-53	1290	7535556786579339	CMakeFiles/Coursework.dir/main.cpp.obj	3bca10f51501fa97
-1291	1610	7535556798965058	Coursework.exe	bb222dc3ce07f24c
-51	1369	7535557716383456	CMakeFiles/Coursework.dir/main.cpp.obj	3bca10f51501fa97
+45	1270	7535589352767180	CMakeFiles/Coursework.dir/main.cpp.obj	3bca10f51501fa97
 1370	1681	7535557729571697	Coursework.exe	bb222dc3ce07f24c
+24	1561	7535592673051622	CMakeFiles/Coursework.dir/main.cpp.obj	3bca10f51501fa97
+42	1581	7535592673237279	CMakeFiles/Coursework.dir/fns.cpp.obj	a0da7b395fff2f52
+1581	1899	7535592688629777	Coursework.exe	c536370b06de6d8f

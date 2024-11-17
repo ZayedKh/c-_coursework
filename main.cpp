@@ -1,11 +1,10 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-
+#include "fns.h"
 
 using namespace std;
 
-vector<string> readFile(ifstream &in);
 
 int main()
 {
@@ -29,20 +28,4 @@ int main()
     return 0;
 }
 
-vector<string> readFile(ifstream &in)
-{
-    if(in.is_open() == 0)
-    {
-        throw domain_error("File is not open, unable to read");
-    }
 
-    string info;
-    vector<string> details;
-
-    while(getline(in, info))
-    {
-        details.push_back(info);
-    }
-
-    return details;
-}
