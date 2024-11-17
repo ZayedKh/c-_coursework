@@ -4,20 +4,28 @@
 #include <vector>
 #include "fns.h"
 
+using namespace std;
 
 
 int main()
 {
-    std::ifstream in("E:/CppCW/Coursework/data/people.txt");
-    std::ifstream pin("E:/CppCW/Coursework/data/payments.txt");
 
-    std::vector<std::string> names = readFile(in);
-    std::vector<std::string> information = readFile(pin);
+    ifstream in("E:/CppCW/Coursework/data/people.txt");
+    ifstream pin("E:/CppCW/Coursework/data/payments.txt");
 
-    printData(std::cout, names);
-    printData(std::cout, information);
+    vector<string> names = readFile(in);
+    vector<string> information = readFile(pin);
 
-    
+    std::unordered_map<std::string, std::vector<std::string>> itemMap;
+    std::unordered_map<std::string, std::vector<double>> amountMap;
+
+    for(const auto& name : names)
+    {
+        itemMap[name];
+        amountMap[name];
+    }
+
+
 
     return 0;
 }
