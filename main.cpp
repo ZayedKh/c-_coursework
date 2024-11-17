@@ -1,29 +1,23 @@
 #include <iostream>
 #include <fstream>
+#include <unordered_map>
 #include <vector>
 #include "fns.h"
 
-using namespace std;
 
 
 int main()
 {
+    std::ifstream in("E:/CppCW/Coursework/data/people.txt");
+    std::ifstream pin("E:/CppCW/Coursework/data/payments.txt");
 
-    ifstream in("E:/CppCW/Coursework/data/people.txt");
-    ifstream pin("E:/CppCW/Coursework/data/payments.txt");
+    std::vector<std::string> names = readFile(in);
+    std::vector<std::string> information = readFile(pin);
 
-    vector<string> names = readFile(in);
-    vector<string> information = readFile(pin);
+    printData(std::cout, names);
+    printData(std::cout, information);
 
-    for(const auto& s : names)
-    {
-        cout << "Name: " << s << '\n';
-    }
-
-    for(const auto& s : information)
-    {
-        cout << "Details: " << s << '\n';
-    }
+    
 
     return 0;
 }
