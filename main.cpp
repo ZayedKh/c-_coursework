@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <unordered_map>
 #include <vector>
 #include "fns.h"
 
@@ -15,15 +16,16 @@ int main()
     vector<string> names = readFile(in);
     vector<string> information = readFile(pin);
 
-    for(const auto& s : names)
+    std::unordered_map<std::string, std::vector<std::string>> itemMap;
+    std::unordered_map<std::string, std::vector<double>> amountMap;
+
+    for(const auto& name : names)
     {
-        cout << "Name: " << s << '\n';
+        itemMap[name];
+        amountMap[name];
     }
 
-    for(const auto& s : information)
-    {
-        cout << "Details: " << s << '\n';
-    }
+
 
     return 0;
 }

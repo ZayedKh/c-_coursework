@@ -24,3 +24,15 @@ std::vector<std::string> readFile(std::ifstream &in)
 
     return details;
 }
+
+void printData(std::ostream& out, const std::vector<std::string>& v)
+{
+    out << "Vector:\n";
+
+    for(const auto& s : v)
+    {
+        out << s << '\n';
+    }
+
+    out << '\n';
+}

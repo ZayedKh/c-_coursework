@@ -8,6 +8,6 @@
 #include <fstream>
 
 std::vector<std::string> readFile(std::ifstream &in);
-
+void printData(std::ostream &out, const std::vector<std::string> &v);
 
 #endif //FNS_H
