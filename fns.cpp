@@ -94,3 +94,18 @@ void getAmount(std::string& s, std::unordered_map<std::string, std::vector<doubl
     md[name].push_back(amount);
 
 }
+
+void printResults(std::vector<std::string>& vs, std::unordered_map<std::string, std::vector<std::string>>& ms, std::unordered_map<std::string, std::vector<double>> &md)
+{
+    for(int i = 0; i < vs.size(); ++i)
+    {
+        std::cout << vs[i] << ": " << '\n';
+        double total = 0;
+        for(int j = 0; j < ms[vs[i]].size(); ++j)
+        {
+            std::cout <<  ms[vs[i]][j] << " " << md[vs[i]][j] << '\n';
+            total += md[vs[i]][j];
+        }
+        std::cout << "Total: " << total << "\n\n";
+    }
+}

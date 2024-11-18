@@ -16,8 +16,6 @@ int main()
     std::unordered_map<std::string, std::vector<std::string>> itemMap;
     std::unordered_map<std::string, std::vector<double>> amountMap;
 
-    printData(std::cout, names);
-    printData(std::cout, information);
 
     std::vector<std::string> vs;
     std::vector<double> vd;
@@ -28,18 +26,10 @@ int main()
         getAmount(s, amountMap);
     }
 
+    printResults(names, itemMap, amountMap);
 
-    for(int i = 0; i < names.size(); ++i)
-    {
-        std::cout << names[i] << ": " << '\n';
-        double total = 0;
-        for(int j = 0; j < itemMap[names[i]].size(); ++j)
-        {
-            std::cout <<  itemMap[names[i]][j] << " " << amountMap[names[i]][j] << '\n';
-            total += amountMap[names[i]][j];
-        }
-        std::cout << "Total: " << total << "\n\n";
-    }
+
+
 
     return 0;
 }
