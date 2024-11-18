@@ -36,3 +36,44 @@ void printData(std::ostream& out, const std::vector<std::string>& v)
 
     out << '\n';
 }
+
+std::string getName(std::string& s)
+{
+    int index = 0;
+
+    while (s[index] != ' ')
+    {
+        ++index;
+    }
+
+    ++index;
+
+    std::string item = "";
+
+    while(s[index] != ' ')
+    {
+        item += s[index];
+        ++index;
+    }
+
+    return item;
+}
+
+double getAmount(std::string& s)
+{
+    const auto n = s.size();
+    std::string amountString = "";
+    double amount;
+
+    int index = n - 2;
+
+    while(s[index] != ' ')
+    {
+        amountString += s[index];
+        --index;
+    }
+
+    amount = std::stod(amountString);
+
+    return amount;
+}

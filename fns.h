@@ -9,5 +9,7 @@
 
 std::vector<std::string> readFile(std::ifstream &in);
 void printData(std::ostream &out, const std::vector<std::string> &v);
+std::string getName(std::string &s);
+double getAmount(std::string &s);
 
 #endif //FNS_H
