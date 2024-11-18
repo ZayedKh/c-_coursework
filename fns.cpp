@@ -5,6 +5,7 @@
 #include "fns.h"
 #include <iostream>
 #include <fstream>
+#include <unordered_map>
 #include <vector>
 
 std::vector<std::string> readFile(std::ifstream &in)
@@ -37,7 +38,7 @@ void printData(std::ostream& out, const std::vector<std::string>& v)
     out << '\n';
 }
 
-std::string getName(std::string& s)
+std::string getName(std::string& s, std::unordered_map<std::string, std::vector<std::string>> &ms)
 {
     int index = 0;
 
@@ -59,7 +60,7 @@ std::string getName(std::string& s)
     return item;
 }
 
-double getAmount(std::string& s)
+double getAmount(std::string& s, std::unordered_map<std::string, double> &md)
 {
     const auto n = s.size();
     std::string amountString = "";
