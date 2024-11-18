@@ -19,27 +19,27 @@ int main()
     printData(std::cout, names);
     printData(std::cout, information);
 
-    for (const auto& name : names)
-    {
-        itemMap[name];
-        amountMap[name];
-    }
-
     std::vector<std::string> vs;
     std::vector<double> vd;
 
     for (std::string& s : information)
     {
-        vs.push_back(getName(s));
-        // vd.push_back(getAmount(s));
+        getName(s, itemMap);
+        getAmount(s, amountMap);
     }
 
 
-    for (int i = 0; i < vs.size(); ++i)
+    for(int i = 0; i < names.size(); ++i)
     {
-        std::cout << "Item at index " << i << ": " << vs[i] << '\n';// "\nAmount at index " << i << ": " << vd[i] << '\n';
+        std::cout << names[i] << ": " << '\n';
+        double total = 0;
+        for(int j = 0; j < itemMap[names[i]].size(); ++j)
+        {
+            std::cout <<  itemMap[names[i]][j] << " " << amountMap[names[i]][j] << '\n';
+            total += amountMap[names[i]][j];
+        }
+        std::cout << "Total: " << total << "\n\n";
     }
-
 
     return 0;
 }
