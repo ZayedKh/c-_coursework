@@ -44,10 +44,10 @@ void printData(std::ostream& out, const std::vector<std::string>& v)
     out << '\n';
 }
 
-void getNameAndAmount(std::string& information, std::unordered_map<std::string,  std::vector<std::string>>& itemMap, std::unordered_map<std::string, std::vector<double>>& amountMap)
+void getNameAndAmount(const std::string& information, std::unordered_map<std::string,  std::vector<std::string>>& itemMap, std::unordered_map<std::string, std::vector<double>>& amountMap)
 {
 
-    if(information.size() == 0) // Error case to handle empty string.
+    if(information.empty()) // Error case to handle empty string.
     {
         throw std::domain_error("Empty string, unable to get name");
     }
@@ -60,16 +60,16 @@ void getNameAndAmount(std::string& information, std::unordered_map<std::string, 
 }
 
 
-void printResults(std::ostream& out, std::vector<std::string>& names, std::unordered_map<std::string, std::vector<std::string>>& itemMap, std::unordered_map<std::string, std::vector<double>> &amountMap)
+void printResults(std::ostream& out,const std::vector<std::string>& names, std::unordered_map<std::string, std::vector<std::string>>& itemMap, std::unordered_map<std::string, std::vector<double>> &amountMap)
 {
-    for(int i = 0; i < names.size(); ++i) // Iterate over vector of string that contains the names from people.txt
+    for (const auto& name : names) // For-each loop to iterate over each name to be used as the key value
     {
-        out << names[i] << ": " << '\n';
+        out << name << ": " << '\n';
         double total = 0; // total variable to sum the amounts
-        for(int j = 0; j < itemMap[names[i]].size(); ++j) // For loop to iterate over each names item and amount
+        for(int j = 0; j < itemMap[name].size(); ++j) // For loop to iterate over each names item and amount
         {
-            out <<  itemMap[names[i]][j] << " " << amountMap[names[i]][j] << '\n';
-            total += amountMap[names[i]][j]; // Sum each amount to total
+            out <<  itemMap[name][j] << " " << amountMap[name][j] << '\n';
+            total += amountMap[name][j]; // Sum each amount to total
         }
         out << "Total: " << total << "\n\n"; // Print total
     }
@@ -86,8 +86,8 @@ void populateMap(std::vector<std::string>& information, std::unordered_map<std::
 
 std::vector<std::string> splitString(const std::string& s, char splitter)
 {
-    std::vector<std::string> segments;
-    std::istringstream stream(s);
+    std::vector<std::string> segments; // Vector to hold segments - name, item, amount
+    std::istringstream stream(s); // Input stream
     std::string segment;
 
     while(std::getline(stream, segment, splitter))
