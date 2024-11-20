@@ -7,6 +7,8 @@
 #include <fstream>
 #include <unordered_map>
 #include <vector>
+#include <string>
+#include <sstream>
 
 std::vector<std::string> readFile(std::ifstream& in)
 {
@@ -147,3 +149,16 @@ void populateMap(std::vector<std::string>& vs, std::unordered_map<std::string, s
     }
 }
 
+std::vector<std::string> splitString(const std::string& s, char splitter)
+{
+    std::vector<std::string> segments;
+    std::istringstream stream(s);
+    std::string segment;
+
+    while(std::getline(stream, segment, splitter))
+    {
+     segments.push_back(segment);
+    }
+
+    return segments;
+}

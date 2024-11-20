@@ -8,6 +8,7 @@
 #include <fstream>
 #include <unordered_map>
 
+std::vector<std::string> splitString(const std::string& s, char splitter);
 std::vector<std::string> readFile(std::ifstream &in);
 void populateMap(std::vector<std::string> &vs, std::unordered_map<std::string, std::vector<std::string>> &ms);
 void populateMap(std::vector<std::string> &vs, std::unordered_map<std::string, std::vector<double>> &md);

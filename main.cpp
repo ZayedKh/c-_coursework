@@ -24,7 +24,16 @@ int main()
     populateMap(information, amountMap);
 
     // Function to print the results in the required format
-    printResults(names, itemMap, amountMap);
+    // printResults(names, itemMap, amountMap);
+
+    // test
+
+    std::vector<std::string> test = splitString(information[0], ' ');
+
+    for (const auto& s : test)
+    {
+        std::cout << "Hey: " << s << '\n';
+    }
 
     return 0;
 }
