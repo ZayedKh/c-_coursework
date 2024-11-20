@@ -19,21 +19,11 @@ int main()
     std::unordered_map<std::string, std::vector<std::string>> itemMap;
     std::unordered_map<std::string, std::vector<double>> amountMap;
 
-    // Functions in fns.cpp and fns.h to populate the hashmaps with relevant information from vector<string>
-    populateMap(information, itemMap);
-    populateMap(information, amountMap);
+    // Function in fns.cpp and fns.h to populate the hashmaps with relevant information from vector<string>
+    populateMap(information, itemMap, amountMap);
 
-    // Function to print the results in the required format
-    // printResults(names, itemMap, amountMap);
-
-    // test
-
-    std::vector<std::string> test = splitString(information[0], ' ');
-
-    for (const auto& s : test)
-    {
-        std::cout << "Hey: " << s << '\n';
-    }
+    // Function to output the results in the required format in desired ostream
+    printResults(std::cout, names, itemMap, amountMap);
 
     return 0;
 }

@@ -10,11 +10,9 @@
 
 std::vector<std::string> splitString(const std::string& s, char splitter);
 std::vector<std::string> readFile(std::ifstream &in);
-void populateMap(std::vector<std::string> &vs, std::unordered_map<std::string, std::vector<std::string>> &ms);
-void populateMap(std::vector<std::string> &vs, std::unordered_map<std::string, std::vector<double>> &md);
+void populateMap(std::vector<std::string> &information, std::unordered_map<std::string, std::vector<std::string>> &itemMap, std::unordered_map<std::string, std::vector<double>> &amountMap);
 void printData(std::ostream &out, const std::vector<std::string> &v);
-void getName(std::string& s, std::unordered_map<std::string, std::vector<std::string>> &ms);
-void getAmount(std::string& s, std::unordered_map<std::string, std::vector<double>> &md);
-void printResults(std::vector<std::string> &vs, std::unordered_map<std::string, std::vector<std::string>> &ms, std::unordered_map<std::string, std::vector<double>> &md);
+void getNameAndAmount(std::string& information, std::unordered_map<std::string,  std::vector<std::string>>& itemMap, std::unordered_map<std::string, std::vector<double>>& amountMap);
+void printResults(std::ostream& out, std::vector<std::string> &names, std::unordered_map<std::string, std::vector<std::string>> &itemMap, std::unordered_map<std::string, std::vector<double>> &amountMap);
 
 #endif //FNS_H
