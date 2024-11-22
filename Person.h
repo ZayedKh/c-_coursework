@@ -9,7 +9,7 @@ class Person
     double amount;
 
 public:
-    Person(const std::string& name, const std::string& item, double& amount);
+    Person(const std::string& name, const std::string& item, const double& amount);
     const std::string getName() const { return name; }
     const std::string getItem() const { return item; }
     const double getAmount() const { return amount; }

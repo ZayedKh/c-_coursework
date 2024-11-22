@@ -19,17 +19,16 @@ int main()
     std::vector<Person> people;
 
     // HashMap to store person name, item, and amount
-    std::unordered_map<std::string , std::pair<std::string, double>>;
+    std::unordered_map<std::string , std::vector<std::pair<std::string, double>>> infoMap;
 
     // Populate people vector with Person objects
     createPeople(information, people);
 
-    for(const auto &p : people)
-    {
-        std::cout << p.getName() << " " << p.getItem() << " " << p.getAmount() << '\n';
-    }
+    // Populate infoMap with person name, item, and amount
+    populateMap(people, infoMap);
 
-
+    // Print results
+    printResults(names, infoMap);
 
 
     return 0;
