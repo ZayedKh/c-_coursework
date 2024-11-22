@@ -1,8 +1,5 @@
 #include "fns.h"
 #include <iostream>
-#include <fstream>
-#include <unordered_map>
-#include <vector>
 #include <string>
 #include <sstream>
 #include <stdexcept>
@@ -73,7 +70,7 @@ Person getNameAndAmount(const std::string& information)
         throw std::domain_error("Empty string, unable to get name");
     }
 
-    std::vector<std::string> segments = splitString(information, ' ');
+    const std::vector<std::string> segments = splitString(information, ' ');
     // calls split string method to split string into 3 segments - name, item, amount.
 
     try
@@ -123,7 +120,7 @@ void populateMap(const std::vector<Person>& people,
 }
 
 
-void printResults(const std::vector<std::string>& names,
+void printResults(std::ostream &out, const std::vector<std::string>& names,
                   std::unordered_map<std::string, std::vector<std::pair<std::string, double>>>& infoMap)
 {
     if (names.empty()) // Throw error is names is empty.
@@ -133,12 +130,12 @@ void printResults(const std::vector<std::string>& names,
 
     for (const auto& name : names) // For range loop to iterate over names vector
     {
-        std::cout << name << "\n";
+        out << name << "\n";
         double sum = 0; // Sum variable to store total amount
 
         for (const auto& p : infoMap[name]) // For range loop to iterate over infoMap pairs, based on name as key
         {
-            std::cout << p.first << ' ' << p.second << '\n'; // Prints item and amount
+            out << p.first << ' ' << p.second << '\n'; // Prints item and amount
             sum += p.second;
         }
 

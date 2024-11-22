@@ -1,7 +1,4 @@
 #include <iostream>
-#include <fstream>
-#include <unordered_map>
-#include <vector>
 #include "fns.h"
 #include "Person.h"
 
@@ -28,7 +25,7 @@ int main()
     populateMap(people, infoMap);
 
     // Print results
-    printResults(names, infoMap);
+    printResults(std::cout, names, infoMap);
 
     return 0;
 }
