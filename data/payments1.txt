@@ -1,0 +1,8 @@
+Bob eggs 2.5
+Alice apple 1.5
+Charlie pen 3.0
+Diana notebook 4.25
+Bob pen 3.5
+Alice eggs 2.0
+Bob pen 3.5
+Alice apple 1.5

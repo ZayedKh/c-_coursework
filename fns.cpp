@@ -5,12 +5,38 @@
 #include <vector>
 #include <string>
 #include <sstream>
+#include <stdexcept>
 
-std::vector<std::string> readFile(std::ifstream& in)
+std::vector<std::string> readPaymentsFile(std::ifstream& in)
 {
     if (in.is_open() == 0) // Error case to handle invalid file.
     {
-        throw std::domain_error("File is not open, unable to read");
+        throw std::domain_error("payments.txt is either not open, or empty. Unable to read.");
+    }
+
+    std::string info;
+    std::vector<std::string> details;
+
+
+    while (std::getline(in, info)) // While loop to push strings into vector<string>
+    {
+        details.push_back(info);
+
+        if (splitString(info, ' ').size() != 3) // Error case to handle invalid file.
+        {
+            throw std::domain_error("Invalid file format, unable to read");
+        }
+    }
+
+    return details; // returns vector
+}
+
+
+std::vector<std::string> readPeopleFile(std::ifstream& in)
+{
+    if (in.is_open() == 0) // Error case to handle invalid file.
+    {
+        throw std::domain_error("people.txt is either not open, or empty. Unable to read.");
     }
 
     std::string info;
@@ -47,21 +73,28 @@ Person getNameAndAmount(const std::string& information)
         throw std::domain_error("Empty string, unable to get name");
     }
 
-
     std::vector<std::string> segments = splitString(information, ' ');
     // calls split string method to split string into 3 segments - name, item, amount.
-    const double amount = std::stod(segments[2]); // Convert string to double.
 
-    Person people(segments[0], segments[1], amount); // Create person object with name, item, amount.
+    try
+    {
+        const double amount = std::stod(segments[2]); // Convert string to double.
+        Person people(segments[0], segments[1], amount); // Create person object with name, item, amount.
 
-    return people; // return person object.
+        return people; // return person object.
+    }
+    catch (const std::invalid_argument& e)
+    {
+        throw std::domain_error("Invalid argument, unable to convert string to double");
+    }
 }
 
 void createPeople(const std::vector<std::string>& information, std::vector<Person>& people)
 {
     for (auto& s : information) // For range loop to iterate over information vector.
     {
-        people.push_back(getNameAndAmount(s)); // Push back Person object returned by getNameAndAmount function into people vector.
+        people.push_back(getNameAndAmount(s));
+        // Push back Person object returned by getNameAndAmount function into people vector.
     }
 }
 
@@ -84,7 +117,8 @@ void populateMap(const std::vector<Person>& people,
 {
     for (const auto& p : people) // For range loop iterates over people vector
     {
-        infoMap[p.getName()].emplace_back(std::make_pair(p.getItem(), p.getAmount())); // Emplace back to add item and amount to map.
+        infoMap[p.getName()].emplace_back(std::make_pair(p.getItem(), p.getAmount()));
+        // Emplace back to add item and amount to map.
     }
 }
 
@@ -99,7 +133,7 @@ void printResults(const std::vector<std::string>& names,
 
     for (const auto& name : names) // For range loop to iterate over names vector
     {
-        std::cout << name << ":\n";
+        std::cout << name << "\n";
         double sum = 0; // Sum variable to store total amount
 
         for (const auto& p : infoMap[name]) // For range loop to iterate over infoMap pairs, based on name as key
