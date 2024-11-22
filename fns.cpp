@@ -1,7 +1,3 @@
-//
-// Created by hp on 11/17/2024.
-//
-
 #include "fns.h"
 #include <iostream>
 #include <fstream>
@@ -30,7 +26,7 @@ std::vector<std::string> readFile(std::ifstream& in)
 
 void printData(std::ostream& out, const std::vector<std::string>& v)
 {
-    if(v.empty()) // Error case to handle empty vector.
+    if (v.empty()) // Error case to handle empty vector.
     {
         throw std::domain_error("Vector is empty, unable to print data");
     }
@@ -44,54 +40,74 @@ void printData(std::ostream& out, const std::vector<std::string>& v)
     out << '\n';
 }
 
-void getNameAndAmount(const std::string& information, std::unordered_map<std::string,  std::vector<std::string>>& itemMap, std::unordered_map<std::string, std::vector<double>>& amountMap)
+Person getNameAndAmount(const std::string& information)
 {
-
-    if(information.empty()) // Error case to handle empty string.
+    if (information.empty()) // Error case to handle empty string.
     {
         throw std::domain_error("Empty string, unable to get name");
     }
 
-    std::vector<std::string> segments = splitString(information, ' '); // calls split string method to split string into 3 segments - name, item, amount.
-    double amount = std::stod(segments[2]);
 
-    itemMap[segments[0]].push_back(segments[1]); // Push item into vector with name as key.
-    amountMap[segments[0]].push_back(amount); // Push item into vector with name as key.
+    std::vector<std::string> segments = splitString(information, ' ');
+    // calls split string method to split string into 3 segments - name, item, amount.
+    const double amount = std::stod(segments[2]); // Convert string to double.
+
+    Person people(segments[0], segments[1], amount); // Create person object with name, item, amount.
+
+    return people; // return person object.
 }
 
-void printResults(std::ostream& out,const std::vector<std::string>& names, std::unordered_map<std::string, std::vector<std::string>>& itemMap, std::unordered_map<std::string, std::vector<double>> &amountMap)
+void createPeople(const std::vector<std::string>& information, std::vector<Person>& people)
 {
-    for (const auto& name : names) // For-each loop to iterate over each name to be used as the key value
+    for (auto& s : information) // For range loop to iterate over information vector.
     {
-        out << name << ": " << '\n';
-        double total = 0; // total variable to sum the amounts
-        for(int j = 0; j < itemMap[name].size(); ++j) // For loop to iterate over each names item and amount
-        {
-            out <<  itemMap[name][j] << " " << amountMap[name][j] << '\n';
-            total += amountMap[name][j]; // Sum each amount to total
-        }
-        out << "Total: " << total << "\n\n"; // Print total
-    }
-}
-
-void populateMap(std::vector<std::string>& information, std::unordered_map<std::string, std::vector<std::string>>& itemMap, std::unordered_map<std::string, std::vector<double>> &amountMap)
-{
-    for(auto& s : information) // For each loop to add each string to map
-    {
-        getNameAndAmount(s, itemMap,amountMap);
+        people.push_back(getNameAndAmount(s)); // Push back Person object returned by getNameAndAmount function into people vector.
     }
 }
 
 std::vector<std::string> splitString(const std::string& s, char splitter)
 {
-    std::vector<std::string> segments; // Vector to hold segments - name, item, amount
-    std::istringstream stream(s); // Input stream
-    std::string segment;
+    std::vector<std::string> segments; // Vector to store segments of string.
+    std::istringstream stream(s); // String stream to read string.
+    std::string segment; // String to store segment.
 
-    while(std::getline(stream, segment, splitter))
+    while (std::getline(stream, segment, splitter)) // While loop to split string into segments.
     {
-     segments.push_back(segment);
+        segments.push_back(segment); // Push segment into vector.
     }
 
     return segments;
+}
+
+void populateMap(const std::vector<Person>& people,
+                 std::unordered_map<std::string, std::vector<std::pair<std::string, double>>>& infoMap)
+{
+    for (const auto& p : people) // For range loop iterates over people vector
+    {
+        infoMap[p.getName()].emplace_back(std::make_pair(p.getItem(), p.getAmount())); // Emplace back to add item and amount to map.
+    }
+}
+
+
+void printResults(const std::vector<std::string>& names,
+                  std::unordered_map<std::string, std::vector<std::pair<std::string, double>>>& infoMap)
+{
+    if (names.empty()) // Throw error is names is empty.
+    {
+        throw std::domain_error("people.txt is empty, unable to print results");
+    }
+
+    for (const auto& name : names) // For range loop to iterate over names vector
+    {
+        std::cout << name << ":\n";
+        double sum = 0; // Sum variable to store total amount
+
+        for (const auto& p : infoMap[name]) // For range loop to iterate over infoMap pairs, based on name as key
+        {
+            std::cout << p.first << ' ' << p.second << '\n'; // Prints item and amount
+            sum += p.second;
+        }
+
+        std::cout << "Total: " << sum << "\n\n";
+    }
 }

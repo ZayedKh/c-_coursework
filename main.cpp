@@ -3,6 +3,7 @@
 #include <unordered_map>
 #include <vector>
 #include "fns.h"
+#include "Person.h"
 
 int main()
 {
@@ -14,15 +15,20 @@ int main()
     std::vector<std::string> names = readFile(in);
     std::vector<std::string> information = readFile(pin);
 
-    // Create HashMaps to store name as key, with item/amount bought as value
-    std::unordered_map<std::string, std::vector<std::string>> itemMap;
-    std::unordered_map<std::string, std::vector<double>> amountMap;
+    // Vector of Person objects
+    std::vector<Person> people;
 
-    // Function in fns.cpp and fns.h to populate the hashmaps with relevant information from vector<string>
-    populateMap(information, itemMap, amountMap);
+    // HashMap to store person name, item, and amount
+    std::unordered_map<std::string , std::vector<std::pair<std::string, double>>> infoMap;
 
-    // Function to output the results in the required format in desired ostream
-    printResults(std::cout, names, itemMap, amountMap);
+    // Populate people vector with Person objects
+    createPeople(information, people);
+
+    // Populate infoMap with person name, item, and amount
+    populateMap(people, infoMap);
+
+    // Print results
+    printResults(names, infoMap);
 
     return 0;
 }
