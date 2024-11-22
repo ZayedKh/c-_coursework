@@ -30,6 +30,5 @@ int main()
     // Print results
     printResults(names, infoMap);
 
-
     return 0;
 }
