@@ -59,7 +59,6 @@ void getNameAndAmount(const std::string& information, std::unordered_map<std::st
     amountMap[segments[0]].push_back(amount); // Push item into vector with name as key.
 }
 
-
 void printResults(std::ostream& out,const std::vector<std::string>& names, std::unordered_map<std::string, std::vector<std::string>>& itemMap, std::unordered_map<std::string, std::vector<double>> &amountMap)
 {
     for (const auto& name : names) // For-each loop to iterate over each name to be used as the key value
@@ -74,7 +73,6 @@ void printResults(std::ostream& out,const std::vector<std::string>& names, std::
         out << "Total: " << total << "\n\n"; // Print total
     }
 }
-
 
 void populateMap(std::vector<std::string>& information, std::unordered_map<std::string, std::vector<std::string>>& itemMap, std::unordered_map<std::string, std::vector<double>> &amountMap)
 {

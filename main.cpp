@@ -4,7 +4,6 @@
 #include <vector>
 #include "fns.h"
 
-
 int main()
 {
     // Extracts file information into input streams in and pin
