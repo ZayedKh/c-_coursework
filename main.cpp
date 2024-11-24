@@ -16,7 +16,7 @@ int main()
     std::vector<Person> people;
 
     // HashMap to store person name, item, and amount
-    std::unordered_map<std::string , std::vector<std::pair<std::string, double>>> infoMap;
+    std::unordered_map<std::string , std::vector<std::pair<std::string, float>>> infoMap;
 
     // Populate people vector with Person objects
     createPeople(information, people);

@@ -1,6 +1,6 @@
 #include "Person.h"
 
-Person::Person(const std::string& name, const std::string& item, const double& amount) : name(name), item(item),
+Person::Person (std::string name, std::string item, const float& amount) : name(std::move(name)), item(std::move(item)),
     amount(amount)
 {
 }

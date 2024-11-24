@@ -75,14 +75,14 @@ Person getNameAndAmount(const std::string& information)
 
     try
     {
-        const double amount = std::stod(segments[2]); // Convert string to double.
+        const float amount = std::stof(segments[2]); // Convert string to float.
         Person people(segments[0], segments[1], amount); // Create person object with name, item, amount.
 
         return people; // return person object.
     }
     catch (const std::invalid_argument& e)
     {
-        throw std::domain_error("Invalid argument, unable to convert string to double");
+        throw std::domain_error("Invalid argument, unable to convert string to float");
     }
 }
 
@@ -110,7 +110,7 @@ std::vector<std::string> splitString(const std::string& s, char splitter)
 }
 
 void populateMap(const std::vector<Person>& people,
-                 std::unordered_map<std::string, std::vector<std::pair<std::string, double>>>& infoMap)
+                 std::unordered_map<std::string, std::vector<std::pair<std::string, float>>>& infoMap)
 {
     for (const auto& p : people) // For range loop iterates over people vector
     {
@@ -121,7 +121,7 @@ void populateMap(const std::vector<Person>& people,
 
 
 void printResults(std::ostream &out, const std::vector<std::string>& names,
-                  std::unordered_map<std::string, std::vector<std::pair<std::string, double>>>& infoMap)
+                  std::unordered_map<std::string, std::vector<std::pair<std::string, float>>>& infoMap)
 {
     if (names.empty()) // Throw error is names is empty.
     {
@@ -131,7 +131,7 @@ void printResults(std::ostream &out, const std::vector<std::string>& names,
     for (const auto& name : names) // For range loop to iterate over names vector
     {
         out << name << "\n";
-        double sum = 0; // Sum variable to store total amount
+        float sum = 0; // Sum variable to store total amount
 
         for (const auto& p : infoMap[name]) // For range loop to iterate over infoMap pairs, based on name as key
         {
@@ -139,6 +139,6 @@ void printResults(std::ostream &out, const std::vector<std::string>& names,
             sum += p.second;
         }
 
-        std::cout << "Total: " << sum << "\n\n";
+        out << "Total: " << sum << "\n\n";
     }
 }

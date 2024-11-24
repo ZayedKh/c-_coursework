@@ -51,19 +51,19 @@ build cmake_object_order_depends_target_Coursework: phony || CMakeFiles/Coursewo
 
 build CMakeFiles/Coursework.dir/main.cpp.obj: CXX_COMPILER__Coursework_unscanned_Debug E$:/CppCW/Coursework/main.cpp || cmake_object_order_depends_target_Coursework
   DEP_FILE = CMakeFiles\Coursework.dir\main.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
+  FLAGS = -g -std=gnu++11 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\Coursework.dir
   OBJECT_FILE_DIR = CMakeFiles\Coursework.dir
 
 build CMakeFiles/Coursework.dir/fns.cpp.obj: CXX_COMPILER__Coursework_unscanned_Debug E$:/CppCW/Coursework/fns.cpp || cmake_object_order_depends_target_Coursework
   DEP_FILE = CMakeFiles\Coursework.dir\fns.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
+  FLAGS = -g -std=gnu++11 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\Coursework.dir
   OBJECT_FILE_DIR = CMakeFiles\Coursework.dir
 
 build CMakeFiles/Coursework.dir/Person.cpp.obj: CXX_COMPILER__Coursework_unscanned_Debug E$:/CppCW/Coursework/Person.cpp || cmake_object_order_depends_target_Coursework
   DEP_FILE = CMakeFiles\Coursework.dir\Person.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
+  FLAGS = -g -std=gnu++11 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\Coursework.dir
   OBJECT_FILE_DIR = CMakeFiles\Coursework.dir
 
