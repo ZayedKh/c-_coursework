@@ -5,8 +5,8 @@
 int main()
 {
     // Extracts file information into input streams in and pin
-    std::ifstream in("data/people1.txt");
-    std::ifstream pin("data/payments1.txt");
+    std::ifstream in("data/people.txt");
+    std::ifstream pin("data/payments.txt");
 
     // Puts file information into vectors
     std::vector<std::string> names = readPeopleFile(in);
