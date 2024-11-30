@@ -25,6 +25,11 @@ std::vector<std::string> readPaymentsFile(std::ifstream& in)
         }
     }
 
+    if(details.empty()) // if vector is empty, throw error.
+    {
+        throw std::domain_error("payments.txt is empty, unable to read");
+    }
+
     return details; // returns vector
 }
 
